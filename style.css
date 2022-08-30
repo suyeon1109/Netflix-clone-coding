@@ -1,5 +1,6 @@
 :root {
     --primary-color: #e50914;
+    --dark-dolor: #141414;
 }
 
 * {
@@ -43,9 +44,22 @@ img {
     background: url('../img/background.jpeg') no-repeat center center/cover;
 }
 
+.showcase::after {
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+    background: rgba(0,0,0,0.6); /*이건 글자까지 검정색을 다 씌워버림 (글자보다 앞)*/
+    box-shadow: inset 50px 50px 80px #000, inset -50px -50px 80px #000;
+}
+
 .showcase-top {
     position: relative;
     height: 90px;
+    z-index:2; /*showcase::after 보다 하나만 높으면 됨*/
 }
 
 .showcase-top img {
@@ -61,6 +75,124 @@ img {
     top: 50%;
     right: 0;
     transform: translate(-50%, -50%);
+}
+
+.showcase-content {
+    position: relative; /*원래 위치를 기준으로 위쪽(top), 아래쪽(bottom), 왼쪽(left), 오른쪽(right)에서 얼마만큼 떨어질 지 결정*/
+    align-items: center;
+    margin: auto;
+    z-index: 2;
+    margin-top: 9rem;
+    justify-content: center;
+    display: flex; /*거의 무조건 justify-content랑 세트로 써야됨 (가운데로 보낼때)*/
+    flex-direction: column; /*이거 안하면 옆으로 나열됨*/
+}
+
+.showcase-content h1 {
+    font-weight: 700; /*굵기*/
+    font-size: 5.2rem;
+    line-height: 1.5; /*줄사이간격*/
+    margin: 0 0 2rem; /*top right bottom left 시계*/
+}
+
+.showcase-content p {
+    font-weight: 400;
+    color: white;
+    font-size: 1.9rem;
+    line-height: 1.25;
+    margin: 0 0 2rem;
+}
+
+.tabs {
+    background: var(--dark-dolor);
+    padding-top: 1rem;
+    border-bottom: 3px solid #3d3d3d;
+}
+
+/*밑에 아이콘 세개 바*/
+.tabs .container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*아이콘 버튼처럼*/
+.tabs p {
+    font-size: 1.2rem;
+    padding-top: 0.5rem;
+}
+
+.tabs .container > div:hover {
+    cursor: pointer;
+}
+
+.tab-border {
+    border-bottom: var(--primary-color) 4px solid;
+}
+
+.tab-content {
+    padding: 3rem 0;
+    background-color: #000;
+}
+
+#tab-1-content .tab-1-content-inner {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/*tab 2*/
+#tab-2-content .tab-2-content-top {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#tab-2-content .tab-2-content-bottom {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/*tab 2*/
+
+.container {
+    max-width: 70%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+/*text styles*/
+.text-xl {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.text-lg {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-dark {
+    text-align: center;
 }
 
 /* Buttons */
